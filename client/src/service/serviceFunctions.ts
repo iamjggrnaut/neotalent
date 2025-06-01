@@ -35,7 +35,7 @@ export const ServiceFunctions = {
     }
   },
 
-  handleSubmit: async (file: any, setSummary: any) => {
+  handleSubmit: async (file: any, setSummary: any, setError: any) => {
     try{
       const formData = new FormData();
       formData.append("pdf", file!);
@@ -47,7 +47,7 @@ export const ServiceFunctions = {
       });
       setSummary(response.data.summary);
     } catch(error:any){
-      console.log(error);
+      setError(error.response.data.message)
     }
   },
 };

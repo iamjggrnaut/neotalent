@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import type { AppContextType } from "../interfaces";
 
 const AppContext = createContext<AppContextType>({} as AppContextType);
@@ -9,20 +9,24 @@ export const AppProvider = ({ children }: any) => {
   const [authToken, setAuthToken] = useState<string | null>(null);
   const [user, setUser] = useState(null);
 
-  const isAuthenticated = !!localStorage.getItem("token");
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      document.location.href = "/auth"
-    }
-  }, [isAuthenticated]);
 
   const logout = () => {
     setAuthToken(null);
     setUser(null);
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
     window.location.href = "/login";
   };
+
+  const storedUser = localStorage.getItem('token') 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if(storedUser){
+        document.location.href = '/summarize'
+      }
+    }, 200);
+    return clearTimeout(timeout)
+  }, [storedUser])
+  
 
   const contextData = {
     user,
@@ -30,7 +34,6 @@ export const AppProvider = ({ children }: any) => {
     setUser,
     authToken,
     setAuthToken,
-    isAuthenticated,
   };
 
   return (

@@ -1,7 +1,6 @@
 @import '../../variables.css';
 
 .upload-page {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,5 +9,9 @@
 
 .summary-block {
     width: 100%;
+    padding: 3vh;
+}
+
+.upload-page-wrapper {
     padding: 3vh;
 }
