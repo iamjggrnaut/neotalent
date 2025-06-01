@@ -1,0 +1,9 @@
+:root {
+    --main-bg: rgb(10, 10, 10);
+    --font-light-color: silver;
+    --primary: rgb(63, 33, 111);
+    --primary-07: rgba(55, 36, 86, 0.7);
+    --plate-bg: rgb(16, 14, 19);
+    --link-color: rgb(88, 33, 177);
+    --link-color-hovered: rgb(125, 66, 219);
+}
